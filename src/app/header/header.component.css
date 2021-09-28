@@ -1,0 +1,26 @@
+#navbarNav{
+  flex-direction: row-reverse;;
+}
+
+.bg-custom{
+  background-color:#54C5CC;
+
+}
+
+.rosca-logo{
+  max-height: 200px;
+  margin: -200px 0;
+
+}
+
+::ng-deep .navbar-light .navbar-brand{
+  color: white;
+ }
+
+ ::ng-deep .navbar-light .navbar-nav .nav-link{
+   color: white;
+ }
+
+ ::ng-deep .navbar-light .navbar-nav .nav-link:hover{
+  color: yellow;
+}

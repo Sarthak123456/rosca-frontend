@@ -74,7 +74,7 @@ export class MainContentComponent implements OnInit {
       },
       {
         "question" : "What if I genuinely don't have money this month?",
-        "answer" : "<strong>ROSCA doesn't have any say if the users defaults any month.</strong> The users can talk among themselves and come up with an optimal solution to the problem. if not, then any user can contact the customer service and the group will be marked as defaulted from the backend."
+        "answer" : "<strong>ROSCA doesn't have any say if the users defaults any month.</strong> The users can talk among themselves and come up with an optimal solution to the problem. if not, then any user can contact the customer service and the group will be marked as defaulted after consulting each member."
       },
       {
         "question" : 'Can I add myself more than once to the same group?',
@@ -82,7 +82,7 @@ export class MainContentComponent implements OnInit {
       },
       {
         "question" : 'Why choose ROSCA over bank loan/fds etc?',
-        "answer" : "<strong>ROSCA works on peer-to-peer model.</strong> It lets you save/borrow money with almost no paper work and therefore you don't hav to pay any commission/interest on the monthly amount as opposed to the bank loan which charge huge interest every month. Moreover, you can even earn some profits if you wish to be a Superuser @₹99 and do competetive bidding."
+        "answer" : "<strong>ROSCA works on peer-to-peer model.</strong> It lets you save/borrow money with almost no paper work and therefore you don't hav to pay any commission/interest on the monthly amount as opposed to the bank loan which charge huge interest every month. Moreover, you can even earn some profits if you wish to be a Superuser @₹99 and participate in the competetive bidding."
       },
       {
         "question" : 'Why choose ROSCA when I can opt for loans?',

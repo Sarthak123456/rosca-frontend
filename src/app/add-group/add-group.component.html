@@ -368,17 +368,17 @@
         </div>
 
         <div class="mb-3">
-          <label for="formFile" class="form-label">Gpay</label>
+          <label for="formFile" class="form-label">Gpay QR code</label>
           <input class="form-control" type="file" (change)='onGpayImageChanged($event)' id="gpayQr" name="gpayQr" >
         </div>
 
       <div class="mb-3">
-          <label for="formFile" class="form-label">PayTm</label>
+          <label for="formFile" class="form-label">PayTm QR code</label>
           <input class="form-control" type="file" (change)='onPaytmImageChanged($event)' id="paytmQr" name="paytmQr" >
         </div>
 
         <div class="mb-3">
-          <label for="formFile" class="form-label">PhonePe</label>
+          <label for="formFile" class="form-label">PhonePe Qr code</label>
           <input class="form-control" type="file" (change)='onPhonepeImageChanged($event)' id="phonepeQr" name="phonepeQr" >
         </div>
       </form>
@@ -406,7 +406,7 @@
           <form class="example-form" (ngSubmit)="searchUser()" #searchUserForm="ngForm">
             <mat-form-field class="example-full-width" appearance="fill">
               <mat-label>Username</mat-label>
-              <input type="text" matInput  placeholder="Ex. Sarthak" name="username" #username="ngModel" [(ngModel)]="userName.user" required>
+              <input type="text" matInput  placeholder="Enter Username" name="username" #username="ngModel" [(ngModel)]="userName.user" required>
               <mat-hint>Errors appear instantly!</mat-hint>
               <mat-error *ngIf="username.invalid && username.touched">
                 Username is <strong>required</strong>

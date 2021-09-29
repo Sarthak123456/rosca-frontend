@@ -34,7 +34,7 @@
   <div class="container-fluid h-custom">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-md-9 col-lg-6 col-xl-5">
-        <img src="https://therosca.herokuapp.com/static/assets/draw2.png" class="img-fluid" alt="Login Image">
+        <img src="https://res.cloudinary.com/hj6tgz5ku/image/upload/v1632915500/draw2_l0dyow.png" class="img-fluid" alt="Login Image">
       </div>
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
         <form class="example-form" #loginFrom="ngForm" novalidate (ngSubmit)="onSubmit()" #heroForm="ngForm" >
@@ -62,7 +62,7 @@
 
           <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Username</mat-label>
-            <input matInput placeholder="Ex. Pizza"  type ="email" name ="email" id="email" #email="ngModel" [(ngModel)] = "loginModel.email" required>
+            <input matInput placeholder="Username"  type ="email" name ="email" id="email" #email="ngModel" [(ngModel)] = "loginModel.email" required>
             <mat-hint>Errors appear instantly!</mat-hint>
             <mat-error *ngIf="email.invalid && email.touched">
               Username is <strong>required</strong>
@@ -71,7 +71,7 @@
 
           <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Password</mat-label>
-            <input matInput placeholder="Ex. Pizza"  #password="ngModel" type ="password" name = "password" required id="password" [(ngModel)] = "loginModel.password">
+            <input matInput placeholder="Password"  #password="ngModel" type ="password" name = "password" required id="password" [(ngModel)] = "loginModel.password">
             <mat-hint>Errors appear instantly!</mat-hint>
             <mat-error *ngIf="password.invalid && password.touched">
               Password is <strong>required</strong>

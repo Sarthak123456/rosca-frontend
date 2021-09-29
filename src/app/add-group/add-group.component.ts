@@ -661,7 +661,7 @@ export class AddGroupComponent implements OnInit,AfterViewChecked {
         currency: 'INR',
         name: 'Rosca', // company name or product name
         description: 'Monthly subscription',  // product description
-        image: 'http://127.0.0.1:8000/static/assets/rosca-logo.png', // company logo or product image
+        image: 'https://res.cloudinary.com/hj6tgz5ku/image/upload/v1632915500/rosca-logo_eecn7w.png', // company logo or product image
         order_id: order_id, // order_id created by you in backend
         modal: {
           // We should prevent closing of the form when esc key is pressed.
@@ -742,7 +742,7 @@ export class AddGroupComponent implements OnInit,AfterViewChecked {
     // const url = `https://wa.me/91${number}?text=Hi%20There!`
     // formatter.format(group.totalAmount).split('.')[0]
     // const text = encodeURIComponent(`${details.admin} Invited you to join group with monthly cost of ${details.amount} \n Join: http://localhost:4200/login`);
-    const text = encodeURIComponent(`Hi,\n${details.admin} invited you to join Rosca with monthly cost of ${this.formatter.format(details.amount).split('.')[0]}. \n\nRosca is a trusted and the first 'NO COMMISSION' social saving platform.\n\nYou can create your group and invite other like-minded people especially friends and family from all over India and start saving or investing money. In times of need, you can also borrow money that is multiples of what you have invested by bidding. \n\nIt gives you all the freedom to make your group according to your flexibility without any commission. \nJoin: www.therosca.in/login`);
+    const text = encodeURIComponent(`Hi,\n${details.admin} invited you to join a group on Rosca with monthly subscription of ${this.formatter.format(details.amount).split('.')[0]}. \n\nRosca is a trusted and the first 'NO COMMISSION' social saving platform.\n\nYou can create your group and invite other like-minded people especially friends and family from all over India and start saving or investing money. In times of need, you can also borrow money that is multiples of what you have invested by bidding. \n\nIt gives you all the freedom to make your group according to your flexibility. \nJoin: www.therosca.in/login`);
     console.log(text);
     const url = `https://wa.me/?text=${text}&lang=en`
     window.open(url, "_blank");

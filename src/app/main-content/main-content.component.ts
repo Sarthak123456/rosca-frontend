@@ -17,6 +17,7 @@ export class MainContentComponent implements OnInit {
   faInstagram:any = faInstagram;
   faYoutube:any = faYoutube;
   faEnvelopeOpenText:any = faEnvelopeOpenText;
+  media_url = 'https://res.cloudinary.com/hj6tgz5ku/image/upload/v1632915501'
 
   constructor(private titleService:Title, private router: Router) {
     // const title = this.getTitle(this.router.routerState, this.router.routerState.root).join(' | ');

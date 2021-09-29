@@ -641,7 +641,7 @@ section.pricing {
 .hero {
   display: table;
   position: relative;
-  background-image: url(https://therosca.herokuapp.com/static/assets/hero-bg.jpeg);
+  background-image: url(https://res.cloudinary.com/hj6tgz5ku/image/upload/v1632915501/hero-bg_pzom2v.jpg);
   background-size: cover;
   padding: 150px 0;
   color: #fff;
@@ -790,23 +790,7 @@ section.pricing {
 /* ==================================================
   Welcome Styling
   ================================================== */
-.welcome {
-  color: #fff;
-  height: 490px;
-  overflow: hidden;
-  padding-top: 85px;
-  background: url("https://therosca.herokuapp.com/static/assets/parallax-bg.jpg") center top no-repeat;
-}
 
-.welcome h2 {
-  text-transform: uppercase;
-  margin-bottom: 15px;
-}
-
-.welcome p {
-  color: #fff;
-  margin-bottom: 45px;
-}
 
 /* ==================================================
   Features Styling

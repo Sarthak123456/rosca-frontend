@@ -643,6 +643,7 @@ section.pricing {
   position: relative;
   background-image: url(https://res.cloudinary.com/hj6tgz5ku/image/upload/v1632915501/hero-bg_pzom2v.jpg);
   background-size: cover;
+  background-position: center;
   padding: 150px 0;
   color: #fff;
   width: 100%;
@@ -1174,6 +1175,10 @@ section.pricing {
   .block {
     padding-left: 30px;
     padding-right: 30px;
+  }
+
+  .me-auto{
+    margin: auto;
   }
 }
 /*

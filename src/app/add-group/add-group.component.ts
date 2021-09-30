@@ -129,7 +129,7 @@ export class AddGroupComponent implements OnInit,AfterViewChecked {
     this._httpService.getGroups(localStorage.getItem("token"))
     .subscribe(
       data => {
-        console.log("data = " , data);
+        // console.log("data = " , data);
         // this.groupDetails = [];
         // this.groupIds = [];
         this.data = data;
@@ -743,7 +743,7 @@ export class AddGroupComponent implements OnInit,AfterViewChecked {
     // formatter.format(group.totalAmount).split('.')[0]
     // const text = encodeURIComponent(`${details.admin} Invited you to join group with monthly cost of ${details.amount} \n Join: http://localhost:4200/login`);
     const text = encodeURIComponent(`Hi,\n${details.admin} invited you to join a group on Rosca with monthly subscription of ${this.formatter.format(details.amount).split('.')[0]}. \n\nRosca is a trusted and the first 'NO COMMISSION' social saving platform.\n\nYou can create your group and invite other like-minded people especially friends and family from all over India and start saving or investing money. In times of need, you can also borrow money that is multiples of what you have invested by bidding. \n\nIt gives you all the freedom to make your group according to your flexibility. \nJoin: www.therosca.in/login`);
-    console.log(text);
+    // console.log(text);
     const url = `https://wa.me/?text=${text}&lang=en`
     window.open(url, "_blank");
   }

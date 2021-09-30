@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Signup } from '../signup';
 import { HttpService } from '../http.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-sign-up',
@@ -12,10 +11,7 @@ import { Title } from '@angular/platform-browser';
 export class SignUpComponent implements OnInit {
   signUp = new Signup("" , '' , '' , '' , '' , '' , parseInt(''), '' , '', false);
   data:any;
-  constructor(private _snackBar: MatSnackBar, private _httpService:HttpService, private titleService:Title) {
-    const title = ['Sign Up'];
-    // console.log(this.titleService.getTitle());
-    this.titleService.setTitle(([this.titleService.getTitle() , title]).join(' | '));
+  constructor(private _snackBar: MatSnackBar, private _httpService:HttpService) {
 
    }
 

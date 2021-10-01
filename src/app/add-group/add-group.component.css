@@ -19,8 +19,12 @@
   background-size: cover;
 }
 
-.cardTitle{
+.cardTitle:not(sup){
   cursor: pointer;
+}
+
+.small-sup{
+  font-size:0.5em;
 }
 
 .cardFooter{

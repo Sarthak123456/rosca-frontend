@@ -14,10 +14,10 @@ footer{
   width: 100%;
 }
 
-::ng-deep sup{
+/* ::ng-deep sup{
 top: 5px;
 font-size: 22px;
-}
+} */
 
 ::ng-deep .container h1{
 text-align: center;

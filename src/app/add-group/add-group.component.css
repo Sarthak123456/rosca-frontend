@@ -15,7 +15,7 @@
 
 .example-header-image {
   /* background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg'); */
-  background-image: url('https://image.shutterstock.com/image-photo/front-image-shiny-white-female-600w-1620671374.jpg');
+  background-image: url('https://res.cloudinary.com/hj6tgz5ku/image/upload/v1632915500/rosca-logo_eecn7w.png');
   background-size: cover;
 }
 

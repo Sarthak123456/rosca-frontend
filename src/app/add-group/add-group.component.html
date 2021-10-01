@@ -246,7 +246,7 @@
       <mat-card class="example-card"  *ngIf= "group.status === 'inactive'">
         <mat-card-header >
           <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title *ngIf="group.name" class= "cardTitle" routerLink='/viewGroup/{{group.g_id}}'>{{group.name}} by {{group.admin}} </mat-card-title>
+          <mat-card-title *ngIf="group.name" class= "cardTitle" routerLink='/viewGroup/{{group.g_id}}'>{{group.name}} by {{group.admin}} <sup class='small-sup'><fa-icon [icon]="faExternalLinkAlt"></fa-icon></sup></mat-card-title>
           <mat-card-subtitle *ngIf="group.duration">Monthly</mat-card-subtitle>
           <!-- <mat-card-subtitle>{{group.g_id}}</mat-card-subtitle> -->
           <!-- <mat-card-subtitle *ngIf="group.totalAmount">{{formatter.format(group.totalAmount).split('.')[0]}} total</mat-card-subtitle>
@@ -292,7 +292,7 @@
 
         <mat-card-header>
           <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title class= "cardTitle" routerLink='/viewGroup/{{group.g_id}}'>{{group.name}} by {{group.admin}} </mat-card-title>
+          <mat-card-title class= "cardTitle" routerLink='/viewGroup/{{group.g_id}}'>{{group.name}} by {{group.admin}} <sup class='small-sup'><fa-icon [icon]="faExternalLinkAlt"></fa-icon></sup> </mat-card-title>
           <mat-card-subtitle>Monthly</mat-card-subtitle>
           <!-- <mat-card-subtitle>{{group.g_id}}</mat-card-subtitle>
           <mat-card-subtitle>₹{{group.totalAmount}} total</mat-card-subtitle>

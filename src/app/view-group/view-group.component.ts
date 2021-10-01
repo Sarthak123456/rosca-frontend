@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
 import { ActivatedRoute } from '@angular/router';
-import { faTimes, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { MatSnackBar } from '@angular/material/snack-bar';
 export interface PeriodicElement {
   name: string;
@@ -18,8 +18,8 @@ export interface PeriodicElement {
 })
 export class ViewGroupComponent implements OnInit {
   displayedColumns: string[] = ['name' , 'winner' , 'start_comity', 'bid_amount' , 'round'];
-  faTimes:any = faTimes;
   faTrash:any = faTrash;
+  faCheck:any = faCheck;
 
   ELEMENT_DATA: any = [];
   dataSource:any = [];
@@ -43,7 +43,7 @@ export class ViewGroupComponent implements OnInit {
     .subscribe(
       data => {
       this.ELEMENT_DATA = data;
-      console.log(this.ELEMENT_DATA);
+      // console.log(this.ELEMENT_DATA);
       this.groupName = this.ELEMENT_DATA[0].group_name;
       if(this.ELEMENT_DATA[0].status !== 'active'){
         this.showActionColumn = true;

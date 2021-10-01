@@ -76,6 +76,7 @@ export class AddGroupComponent implements OnInit,AfterViewChecked {
     this.activeGroupDetails.forEach((element: any, i:number) => {
       // console.log("element = "  , element);
       const today = Date.now();
+      // const today = 1633418404872.881;
       const bidEndDate = element.bidEndDateInMilis ? element.bidEndDateInMilis : null;
 
       // var y = document.getElementById('bidButton' + i );
@@ -84,37 +85,39 @@ export class AddGroupComponent implements OnInit,AfterViewChecked {
       if(today > bidEndDate){
         // console.log("today = " , today);
         // console.log("bidEndDate = " , bidEndDate);
-        var y = document.getElementById('bidButton' + i );
-        // console.log("bidButton=" , y);
+        var bidButton = document.getElementById('bidButton' + i );
+        const transferbtn = document.getElementById('transfer' + i );
         // console.log("loggedInUser = " ,  localStorage.getItem("loggedInUser"));
-
-        if(y){
-          // console.log("element  ="  , element );
-
-            if(y){
-              y.style.display = "none";
-              this.showTransferButton = true;
+            if(bidButton){
+              bidButton.style.display = "none";
+              // this.showBidButton = true;
             }
 
+            if(transferbtn){
+              transferbtn.style.display = "initial";
+              // console.log("transferbtn=" , transferbtn);
 
-        }
+              // this.showTransferButton = true;
 
-      }  else if(today <= bidEndDate){
-
-       const y = document.getElementById('transfer' + i );
-        // console.log("loggedInUser = " ,  localStorage.getItem("loggedInUser"));
-
-        if(y){
-          // console.log("element  ="  , element );
-
-            if(y){
-              y.style.display = "none";
-              this.showBidButton = true;
             }
+          }
+
+    //   }  else if(today <= bidEndDate){
+
+    //    const y = document.getElementById('transfer' + i );
+    //     console.log("loggedInUser = " ,  localStorage.getItem("loggedInUser"));
+
+    //     if(y){
+    //       // console.log("element  ="  , element );
+
+    //         if(y){
+    //           y.style.display = "initial";
+    //           this.showBidButton = true;
+    //         }
 
 
-      }
-    }
+    //   }
+    // }
 
   });
 
@@ -742,7 +745,7 @@ export class AddGroupComponent implements OnInit,AfterViewChecked {
     // const url = `https://wa.me/91${number}?text=Hi%20There!`
     // formatter.format(group.totalAmount).split('.')[0]
     // const text = encodeURIComponent(`${details.admin} Invited you to join group with monthly cost of ${details.amount} \n Join: http://localhost:4200/login`);
-    const text = encodeURIComponent(`Hi,\n${details.admin} invited you to join a group on Rosca with monthly subscription of ${this.formatter.format(details.amount).split('.')[0]}. \n\nRosca is a trusted and the first 'NO COMMISSION' social saving platform.\n\nYou can create your group and invite other like-minded people especially friends and family from all over India and start saving or investing money. In times of need, you can also borrow money that is multiples of what you have invested by bidding. \n\nIt gives you all the freedom to make your group according to your flexibility. \nJoin: www.therosca.in/login`);
+    const text = encodeURIComponent(`Hi,\n${details.admin} invited you to join a group on Rosca with monthly subscription of ${this.formatter.format(details.amount).split('.')[0]}. \n\nRosca is a trusted and the first 'NO COMMISSION' social saving platform.\n\nYou can create your group and invite other like-minded people especially friends and family from all over India and start saving or investing money. In times of need, you can also borrow money that is multiples of what you have invested by bidding. \n\nIt gives you all the freedom to make your group according to your flexibility. \n\nJoin now: https://www.therosca.in/login`);
     // console.log(text);
     const url = `https://wa.me/?text=${text}&lang=en`
     window.open(url, "_blank");

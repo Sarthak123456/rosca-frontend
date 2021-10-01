@@ -38,7 +38,7 @@
   <!-- Weight Column -->
   <ng-container matColumnDef="winner">
     <th mat-header-cell *matHeaderCellDef> Winner </th>
-    <td mat-cell *matCellDef="let element"> {{element.winner}} </td>
+    <td mat-cell *matCellDef="let element"><span *ngIf='element.winner'><fa-icon [icon]="faCheck"></fa-icon></span></td>
   </ng-container>
 
   <!-- Symbol Column -->
@@ -50,7 +50,7 @@
   <!-- Symbol Column -->
   <ng-container matColumnDef="start_comity">
     <th mat-header-cell *matHeaderCellDef> Start Comity </th>
-    <td mat-cell *matCellDef="let element"> {{element.start_comity}} </td>
+    <td mat-cell *matCellDef="let element"><span *ngIf='element.start_comity'><fa-icon [icon]="faCheck"></fa-icon></span></td>
   </ng-container>
 
 <!-- Symbol Column -->

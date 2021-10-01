@@ -16,7 +16,7 @@ export class ViewPaymentDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.winner = this.route.snapshot.paramMap.get('winner') ? this.route.snapshot.paramMap.get('winner') : '';
-    console.log("Winner in payment = " , this.winner);
+    // console.log("Winner in payment = " , this.winner);
     this.getPaymentDetailsByUsername();
 
   }
@@ -30,7 +30,7 @@ export class ViewPaymentDetailsComponent implements OnInit {
       .subscribe(
         data => {
           this.data = data;
-          console.log("User bank details " , this.data);
+          // console.log("User bank details " , this.data);
           // this.openSnackBar("User bank details saved!", "close");
         },
         error => {

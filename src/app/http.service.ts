@@ -166,7 +166,7 @@ export class HttpService {
   signUpUser(signUp:any){
 
     const formData = new FormData();
-    console.log("signUp in service = "  , signUp.firstName)
+    // console.log("signUp in service = "  , signUp.firstName)
     let httpOptions = {
         headers: new HttpHeaders({
             'Content-Type': 'multipart/form-data; charset=UTF-8'
@@ -214,7 +214,7 @@ export class HttpService {
   getBankDetails(winner:string){
 
     const formData = new FormData();
-    console.log("winner in service = "  , winner)
+    // console.log("winner in service = "  , winner)
     let httpOptions = {
         headers: new HttpHeaders({
             'Content-Type': 'multipart/form-data; charset=UTF-8'
@@ -231,7 +231,7 @@ export class HttpService {
   getRazorPayOrderId(group_id:string, order_amount:any, token:any){
 
     const formData = new FormData();
-    console.log("group_id = "  , group_id)
+    // console.log("group_id = "  , group_id)
     let httpOptions = {
         headers: new HttpHeaders({
             'Content-Type': 'multipart/form-data; charset=UTF-8'
@@ -276,7 +276,7 @@ export class HttpService {
 
     formData.append('username' ,  userName);
     formData.append('g_id' ,  groupId);
-    console.log(userName , groupId);
+    // console.log(userName , groupId);
 
     return this._http.post(this.base_url+"/delete/group/user/" , formData)
 

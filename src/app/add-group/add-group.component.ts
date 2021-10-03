@@ -73,12 +73,13 @@ export class AddGroupComponent implements OnInit,AfterViewChecked {
       // console.log("element = "  , element);
       const today = Date.now();
       // const today = 1633418404872.881;
-      const bidEndDate = element.bidEndDateInMilis ? element.bidEndDateInMilis : null;
+      // const bidEndDate = element.bidEndDateInMilis ? element.bidEndDateInMilis : null;
+      const endDateInMilis = element.endDateInMilis ? element.endDateInMilis : null;
 
       // var y = document.getElementById('bidButton' + i );
       // console.log("bidButton=", today , bidEndDate, today <= bidEndDate, today > bidEndDate);
 
-      if(today > bidEndDate){
+      if(endDateInMilis > today){
         // console.log("today = " , today);
         // console.log("bidEndDate = " , bidEndDate);
         var bidButton = document.getElementById('bidButton' + i );

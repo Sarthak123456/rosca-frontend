@@ -71,17 +71,24 @@ export class AddGroupComponent implements OnInit,AfterViewChecked {
 
     this.activeGroupDetails.forEach((element: any, i:number) => {
       // console.log("element = "  , element);
-      const today = Date.now();
+      var oldDate = new Date("Thu Jan 01 1970 23:59:00 GMT +0530(IST)");
+      const today = new Date();
+      today.setHours(oldDate.getHours());
+      today.setMinutes(oldDate.getMinutes());
+      today.setSeconds(oldDate.getSeconds());
       // const today = 1633418404872.881;
       const bidEndDateInMilis = element.bidEndDateInMilis ? element.bidEndDateInMilis : null;
       const endDateInMilis = element.endDateInMilis ? element.endDateInMilis : null;
 
+      // console.log("admin = " , element.admin);
+      // console.log("totalAmount = " , element.totalAmount);
+      // console.log("today = " , today.getTime());
+      // console.log("bidEndDate = " , bidEndDateInMilis);
+
       // var y = document.getElementById('bidButton' + i );
       // console.log("bidButton=", today , bidEndDate, today <= bidEndDate, today > bidEndDate);
 
-      if(today <= bidEndDateInMilis){
-        // console.log("today = " , today);
-        // console.log("bidEndDate = " , bidEndDate);
+      if(today.getTime() <= bidEndDateInMilis){
         var bidButton = document.getElementById('bidButton' + i );
         const transferbtn = document.getElementById('transfer' + i );
         // console.log("loggedInUser = " ,  localStorage.getItem("loggedInUser"));

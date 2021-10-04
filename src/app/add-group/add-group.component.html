@@ -191,7 +191,7 @@
         <p> <strong>Chit value: </strong> {{formatter.format(group.totalAmount).split('.')[0]}}</p>
         <p *ngIf="group.bidEndDate"> <strong> Subscribers: </strong> {{group.usersInGroup.length}}   </p>
         <p> <strong>Monthly Subscription: </strong> {{formatter.format(group.amount).split('.')[0]}}</p>
-        <p *ngIf="group.end_date"><strong>Next winner on: </strong> {{group.end_date}}</p>
+        <p *ngIf="group.end_date"><strong>Next bid on: </strong> {{group.end_date}}</p>
         <p *ngIf="group.bidEndDate"> <strong> Bid open till: </strong> {{group.bidEndDate}}  </p>
         <p *ngIf="group.minBidAmountUser"><strong> {{group.minBidAmountUser ? "'" + group.minBidAmountUser  + "'" +  ' highest bid user with bid amount ' : ''}} {{formatter.format(group.bid_amount).split('.')[0] ? group.bid_amount : ''}} for round {{group.round}}  </strong> <p>
 
@@ -261,9 +261,6 @@
         <p *ngIf='group.totalAmount'> <strong>Chit value: </strong> {{formatter.format(group.totalAmount).split('.')[0]}}</p>
         <p> <strong> Subscribers: </strong> {{group.usersInGroup.length}}   </p>
         <p> <strong>Monthly Subscription: </strong> {{formatter.format(group.amount).split('.')[0]}}</p>
-        <p *ngIf="group.end_date"><strong>Next winner on: </strong> {{group.end_date}}</p>
-        <p *ngIf="group.bidEndDate"> <strong> Bid open till: </strong> {{group.bidEndDate}}  </p>
-        <p *ngIf="group.minBidAmountUser"><strong> {{group.minBidAmountUser ? "'" + group.minBidAmountUser  + "'" +  ' highest bid user with bid amount ' : ''}} {{formatter.format(group.bid_amount).split('.')[0] ? group.bid_amount : ''}} for round {{group.round}}  </strong> <p>
 
         </mat-card-content>
 

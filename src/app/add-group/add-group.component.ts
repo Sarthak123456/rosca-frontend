@@ -36,8 +36,8 @@ export class AddGroupComponent implements OnInit,AfterViewChecked {
   userDetails:any = '';
   showBankDetailsModal:boolean = true;
   showBidForm = false;
-  showBidButton = false;
-  showTransferButton = false;
+  // showBidButton = false;
+  // showTransferButton = false;
   showUserNotFoundError = false;
   loggedInUser:any = '';
   token:any = '';
@@ -73,48 +73,61 @@ export class AddGroupComponent implements OnInit,AfterViewChecked {
       // console.log("element = "  , element);
       const today = Date.now();
       // const today = 1633418404872.881;
-      // const bidEndDate = element.bidEndDateInMilis ? element.bidEndDateInMilis : null;
+      const bidEndDateInMilis = element.bidEndDateInMilis ? element.bidEndDateInMilis : null;
       const endDateInMilis = element.endDateInMilis ? element.endDateInMilis : null;
 
       // var y = document.getElementById('bidButton' + i );
       // console.log("bidButton=", today , bidEndDate, today <= bidEndDate, today > bidEndDate);
 
-      if(endDateInMilis > today){
+      if(today <= bidEndDateInMilis){
         // console.log("today = " , today);
         // console.log("bidEndDate = " , bidEndDate);
         var bidButton = document.getElementById('bidButton' + i );
         const transferbtn = document.getElementById('transfer' + i );
         // console.log("loggedInUser = " ,  localStorage.getItem("loggedInUser"));
             if(bidButton){
-              bidButton.style.display = "none";
+              bidButton.style.display = "initial";
               // this.showBidButton = true;
             }
 
             if(transferbtn){
-              transferbtn.style.display = "initial";
+              transferbtn.style.display = "none";
               // console.log("transferbtn=" , transferbtn);
 
               // this.showTransferButton = true;
 
             }
-          }
+          } else if(endDateInMilis > today){
 
-    //   }  else if(today <= bidEndDate){
+              // const y = document.getElementById('transfer' + i );
+              var bidButton = document.getElementById('bidButton' + i );
+              const transferbtn = document.getElementById('transfer' + i );
+                // console.log("loggedInUser = " ,  localStorage.getItem("loggedInUser"));
 
-    //    const y = document.getElementById('transfer' + i );
-    //     console.log("loggedInUser = " ,  localStorage.getItem("loggedInUser"));
+                if(bidButton){
+                  bidButton.style.display = "none";
+                  // this.showBidButton = true;
+                }
 
-    //     if(y){
-    //       // console.log("element  ="  , element );
+                if(transferbtn){
+                  transferbtn.style.display = "initial";
+                  // console.log("transferbtn=" , transferbtn);
 
-    //         if(y){
-    //           y.style.display = "initial";
-    //           this.showBidButton = true;
-    //         }
+                  // this.showTransferButton = true;
+
+                }
+
+              //   if(y){
+              //     // console.log("element  ="  , element );
+
+              //       if(y){
+              //         y.style.display = "initial";
+              //         this.showBidButton = true;
+              //       }
 
 
-    //   }
-    // }
+              // }
+    }
 
   });
 

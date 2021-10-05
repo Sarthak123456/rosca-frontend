@@ -193,6 +193,7 @@
         <p> <strong>Monthly Subscription: </strong> {{formatter.format(group.amount).split('.')[0]}}</p>
         <p *ngIf="group.end_date"><strong>Next bid on: </strong> {{group.end_date}}</p>
         <p *ngIf="group.bidEndDate"> <strong> Bid open till: </strong> {{group.bidEndDate}}  </p>
+        <!-- <p *ngIf="group.bidEndDate"> <strong> Bid open for: </strong>  {{timeLeft.days}}day, {{timeLeft.hours}}hours </p> -->
         <p *ngIf="group.minBidAmountUser"><strong> {{group.minBidAmountUser ? "'" + group.minBidAmountUser  + "'" +  ' highest bid user with bid amount ' : ''}} {{formatter.format(group.bid_amount).split('.')[0] ? group.bid_amount : ''}} for round {{group.round}}  </strong> <p>
 
         </mat-card-content>
@@ -202,7 +203,7 @@
           <!-- <button mat-raised-button color="warn" data-bs-toggle="modal" data-bs-target="#bankDetailsModal">Start Group</button> -->
           <!-- <button mat-raised-button color="accent" data-bs-toggle="modal" (click) = "setgroupId(group.g_id)" data-bs-target="#addUserModal">Add Users</button> -->
           <button mat-button style="display:initial;" id="bidButton{{i}}"   (click) = "showBidAmountForms(i, group.g_id)">Bid</button>
-          <button mat-button id="transfer{{i}}" style="display: none;"  routerLink="/{{group.winner}}/bank_details">Tranfer {{formatter.format(group.totalAmount - group.bid_amount).split('.')[0]}} to {{group.winner}}</button>
+          <button mat-button id="transfer{{i}}" style="display: none;"  routerLink="/{{group.winner}}/bank_details">Tranfer {{formatter.format(group.tranfer_to_winner).split('.')[0]}} to {{group.winner}}</button>
           <!--  <button mat-button (click)="deleteGroup(i)">Delete</button> -->
         </mat-card-actions>
 
@@ -365,17 +366,17 @@
         </div>
 
         <div class="mb-3">
-          <label for="formFile" class="form-label">Gpay QR code</label>
+          <label for="formFile" class="form-label"><a href='https://www.androidcentral.com/how-share-your-google-pay-qr-code/' target="_blank"> Gpay QR code<sup class='small-sup'><fa-icon [icon]="faExternalLinkAlt"></fa-icon></sup></a></label>
           <input class="form-control" type="file" (change)='onGpayImageChanged($event)' accept="image/*" id="gpayQr" name="gpayQr" >
         </div>
 
       <div class="mb-3">
-          <label for="formFile" class="form-label">PayTm QR code</label>
+          <label for="formFile" class="form-label"><a href='https://scanova.io/blog/paytm-qr-code/' target="_blank">PayTm QR code<sup class='small-sup'><fa-icon [icon]="faExternalLinkAlt"></fa-icon></sup></a></label>
           <input class="form-control" type="file" (change)='onPaytmImageChanged($event)' accept="image/*" id="paytmQr" name="paytmQr" >
         </div>
 
         <div class="mb-3">
-          <label for="formFile" class="form-label">PhonePe Qr code</label>
+          <label for="formFile" class="form-label"><a href='https://scanova.io/blog/phonepe-qr-code/' target="_blank"> PhonePe Qr code<sup class='small-sup'><fa-icon [icon]="faExternalLinkAlt"></fa-icon></sup></a></label>
           <input class="form-control" type="file" (change)='onPhonepeImageChanged($event)' accept="image/*" id="phonepeQr" name="phonepeQr" >
         </div>
       </form>

@@ -46,6 +46,13 @@ export class AddGroupComponent implements OnInit,AfterViewChecked {
   gpayQR!: File;
   paytmQR!: File;
   phonepeQR!: File;
+  timeLeftString!: string;
+  timeLeft = {
+    days: 0,
+    hours : 0,
+    minutes : 0 ,
+    seconds : 0
+  }
   bankDetails = new BankDetails('' , '' , '');
   formatter = new Intl.NumberFormat(undefined, {
     style: 'currency',
@@ -76,14 +83,15 @@ export class AddGroupComponent implements OnInit,AfterViewChecked {
       today.setHours(oldDate.getHours());
       today.setMinutes(oldDate.getMinutes());
       today.setSeconds(oldDate.getSeconds());
-      // const today = 1633418404872.881;
+      // const today = 1633834280340;
       const bidEndDateInMilis = element.bidEndDateInMilis ? element.bidEndDateInMilis : null;
       const endDateInMilis = element.endDateInMilis ? element.endDateInMilis : null;
 
       // console.log("admin = " , element.admin);
       // console.log("totalAmount = " , element.totalAmount);
-      // console.log("today = " , today.getTime());
+      // console.log("today = " , today);
       // console.log("bidEndDate = " , bidEndDateInMilis);
+      // console.log("endDateInMilis = " , endDateInMilis);
 
       // var y = document.getElementById('bidButton' + i );
       // console.log("bidButton=", today , bidEndDate, today <= bidEndDate, today > bidEndDate);
@@ -109,7 +117,7 @@ export class AddGroupComponent implements OnInit,AfterViewChecked {
               // const y = document.getElementById('transfer' + i );
               var bidButton = document.getElementById('bidButton' + i );
               const transferbtn = document.getElementById('transfer' + i );
-                // console.log("loggedInUser = " ,  localStorage.getItem("loggedInUser"));
+                // console.log("loggedInUser tra = " ,  localStorage.getItem("loggedInUser"));
 
                 if(bidButton){
                   bidButton.style.display = "none";
@@ -158,6 +166,13 @@ export class AddGroupComponent implements OnInit,AfterViewChecked {
         // console.log("data" , data);
 
       this.data.forEach((element: any, i:number) => {
+        // this.timeLeftString = element.time_left;
+        // console.log("timeLeft = ",  this.timeLeftString.split(', '));
+        // let timeLeftArray =  this.timeLeftString.split(', ')[1];
+        // this.timeLeft.days = parseInt(this.timeLeftString.split(', ')[0]);
+        // this.timeLeft.hours = parseInt(timeLeftArray.split(":")[0]);
+        // this.timeLeft.minutes = parseInt(timeLeftArray.split(":")[1]);
+        // this.timeLeft.seconds = parseInt(timeLeftArray.split(":")[2]);
         element.usersInGroup.forEach((user: string|any) => {
           // console.log(element.bid_end_date);
           if(user.username === this.loggedInUser){
@@ -208,7 +223,7 @@ export class AddGroupComponent implements OnInit,AfterViewChecked {
              if(user.account_number !== undefined && user.account_number !== null && user.account_number && user.ifsc){
               this.showBankDetailsModal = false;
             }
-            // console.log("groupDetails = " , this.groupDetails);
+            // console.log("user.account_number  = " , user.account_number );
             return
 
           }
@@ -511,7 +526,7 @@ export class AddGroupComponent implements OnInit,AfterViewChecked {
 
         } else{
           Object.values(data).forEach(user => {pendingUsers.push(user.name)})
-          this.openSnackBar(pendingUsers.join(', ') +" pending", "close");
+          this.openSnackBar(pendingUsers.join(', ') +" pending to activate group.", "close");
 
         }
 

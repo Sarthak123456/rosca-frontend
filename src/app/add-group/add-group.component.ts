@@ -6,6 +6,7 @@ import { Username } from '../username';
 import { BankDetails } from '../bank-details';
 import { Bidform } from '../bid-form';
 import { WindowRefService } from '../window-ref.service';
+import { Title } from '@angular/platform-browser';
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 
 
@@ -64,7 +65,11 @@ export class AddGroupComponent implements OnInit,AfterViewChecked {
   });
 
 
-  constructor(private _snackBar: MatSnackBar, private _httpService:HttpService, private winRef: WindowRefService) {
+  constructor(private _snackBar: MatSnackBar, private _httpService:HttpService, private winRef: WindowRefService, private titleService:Title) {
+    const title = ['Add Group'];
+    // console.log(this.titleService.getTitle());
+    this.titleService.setTitle(([this.titleService.getTitle() , title]).join(' | '));
+
   }
 
   ngOnInit(): void {

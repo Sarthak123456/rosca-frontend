@@ -3,6 +3,7 @@ import { HttpService } from '../http.service';
 import { ActivatedRoute } from '@angular/router';
 import { faTrash, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Title } from '@angular/platform-browser';
 export interface PeriodicElement {
   name: string;
   winner: number;
@@ -29,7 +30,11 @@ export class ViewGroupComponent implements OnInit {
   groupId = '';
 
   users:any;
-  constructor( private _httpService:HttpService , private route:ActivatedRoute, private _snackBar: MatSnackBar) { }
+  constructor( private _httpService:HttpService , private route:ActivatedRoute, private _snackBar: MatSnackBar, private titleService:Title) {
+    const title = ['View Group'];
+    // console.log(this.titleService.getTitle());
+    this.titleService.setTitle(([this.titleService.getTitle() , title]).join(' | '));
+ }
 
   ngOnInit(): void {
 

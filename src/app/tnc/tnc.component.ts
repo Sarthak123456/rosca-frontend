@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-tnc',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TncComponent implements OnInit {
 
-  constructor() { }
+  constructor(private titleService:Title) {
+    const title = ['T&C'];
+    // console.log(this.titleService.getTitle());
+    this.titleService.setTitle(([this.titleService.getTitle() , title]).join(' | '));
+}
 
   ngOnInit(): void {
   }

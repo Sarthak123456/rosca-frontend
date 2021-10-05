@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { HttpService } from '../http.service';
 
@@ -12,7 +13,11 @@ export class ViewPaymentDetailsComponent implements OnInit {
   winner:any = '';
   data:any;
 
-  constructor(private route: ActivatedRoute, private _httpService:HttpService) { }
+  constructor(private route: ActivatedRoute, private _httpService:HttpService, private titleService:Title) {
+    const title = ['View Payment Details'];
+    // console.log(this.titleService.getTitle());
+    this.titleService.setTitle(([this.titleService.getTitle() , title]).join(' | '));
+ }
 
   ngOnInit(): void {
     this.winner = this.route.snapshot.paramMap.get('winner') ? this.route.snapshot.paramMap.get('winner') : '';

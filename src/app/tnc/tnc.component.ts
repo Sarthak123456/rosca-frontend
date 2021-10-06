@@ -11,7 +11,13 @@ export class TncComponent implements OnInit {
   constructor(private titleService:Title) {
     const title = ['T&C'];
     // console.log(this.titleService.getTitle());
-    this.titleService.setTitle(([this.titleService.getTitle() , title]).join(' | '));
+
+    if(this.titleService.getTitle().indexOf('|') !== -1){
+      this.titleService.setTitle(([this.titleService.getTitle().split(' | ')[0] , title]).join(' | '));
+
+    }else{
+      this.titleService.setTitle(([this.titleService.getTitle() , title]).join(' | '));
+    }
 }
 
   ngOnInit(): void {

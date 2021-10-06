@@ -21,8 +21,13 @@ export class LoginComponent implements OnInit {
   constructor(private _httpService:HttpService, private router: Router, private _snackBar: MatSnackBar, private titleService:Title) {
     const title = ['Login'];
     // console.log(this.titleService.getTitle());
-    this.titleService.setTitle(([this.titleService.getTitle() , title]).join(' | '));
 
+    if(this.titleService.getTitle().indexOf('|') !== -1){
+      this.titleService.setTitle(([this.titleService.getTitle().split(' | ')[0] , title]).join(' | '));
+
+    }else{
+      this.titleService.setTitle(([this.titleService.getTitle() , title]).join(' | '));
+    }
    }
 
   ngOnInit(): void {

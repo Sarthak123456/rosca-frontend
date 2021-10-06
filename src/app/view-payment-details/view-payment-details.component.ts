@@ -16,7 +16,13 @@ export class ViewPaymentDetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute, private _httpService:HttpService, private titleService:Title) {
     const title = ['View Payment Details'];
     // console.log(this.titleService.getTitle());
-    this.titleService.setTitle(([this.titleService.getTitle() , title]).join(' | '));
+
+    if(this.titleService.getTitle().indexOf('|') !== -1){
+      this.titleService.setTitle(([this.titleService.getTitle().split(' | ')[0] , title]).join(' | '));
+
+    }else{
+      this.titleService.setTitle(([this.titleService.getTitle() , title]).join(' | '));
+    }
  }
 
   ngOnInit(): void {

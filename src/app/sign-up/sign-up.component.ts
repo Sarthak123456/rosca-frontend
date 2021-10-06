@@ -16,7 +16,15 @@ export class SignUpComponent implements OnInit {
   constructor(private _snackBar: MatSnackBar, private _httpService:HttpService, private router: Router, private titleService:Title) {
     const title = ['Sign up'];
     // console.log(this.titleService.getTitle());
-    this.titleService.setTitle(([this.titleService.getTitle() , title]).join(' | '));
+
+    if(this.titleService.getTitle().indexOf('|') !== -1){
+      this.titleService.setTitle(([this.titleService.getTitle().split(' | ')[0] , title]).join(' | '));
+
+    }else{
+      this.titleService.setTitle(([this.titleService.getTitle() , title]).join(' | '));
+    }
+
+    console.log("getTitle = " , this.titleService.getTitle());
 
 
    }

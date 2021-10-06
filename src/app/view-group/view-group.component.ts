@@ -33,8 +33,14 @@ export class ViewGroupComponent implements OnInit {
   constructor( private _httpService:HttpService , private route:ActivatedRoute, private _snackBar: MatSnackBar, private titleService:Title) {
     const title = ['View Group'];
     // console.log(this.titleService.getTitle());
-    this.titleService.setTitle(([this.titleService.getTitle() , title]).join(' | '));
- }
+
+    if(this.titleService.getTitle().indexOf('|') !== -1){
+      this.titleService.setTitle(([this.titleService.getTitle().split(' | ')[0] , title]).join(' | '));
+
+    }else{
+      this.titleService.setTitle(([this.titleService.getTitle() , title]).join(' | '));
+    }
+   }
 
   ngOnInit(): void {
 

@@ -67,11 +67,13 @@ export class AddGroupComponent implements OnInit,AfterViewChecked {
 
   constructor(private _snackBar: MatSnackBar, private _httpService:HttpService, private winRef: WindowRefService, private titleService:Title) {
     const title = ['Add Group'];
-    // console.log(this.titleService.getTitle());
-    this.titleService.setTitle(([this.titleService.getTitle() , title]).join(' | '));
+    if(this.titleService.getTitle().indexOf('|') !== -1){
+      this.titleService.setTitle(([this.titleService.getTitle().split(' | ')[0] , title]).join(' | '));
 
+    }else{
+      this.titleService.setTitle(([this.titleService.getTitle() , title]).join(' | '));
+    }
   }
-
   ngOnInit(): void {
     this.getGroups();
   }
@@ -421,7 +423,7 @@ export class AddGroupComponent implements OnInit,AfterViewChecked {
         console.log("error" , error);
     }
       );
-
+      this.showUserNotFoundError = false;
   }
 
   addUserToGroup(userDetails:any){

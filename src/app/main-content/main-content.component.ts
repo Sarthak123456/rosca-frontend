@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {Title } from "@angular/platform-browser";
-import { Router } from '@angular/router';
 import { faPhoneAlt, faEnvelopeOpenText} from '@fortawesome/free-solid-svg-icons';
 import { faYoutube, faInstagram, faFacebook } from '@fortawesome/free-brands-svg-icons';
 
@@ -19,26 +18,17 @@ export class MainContentComponent implements OnInit {
   faEnvelopeOpenText:any = faEnvelopeOpenText;
   media_url = 'https://res.cloudinary.com/hj6tgz5ku/image/upload/v1632915501'
 
-  constructor(private titleService:Title, private router: Router) {
-    // const title = this.getTitle(this.router.routerState, this.router.routerState.root).join(' | ');
+  constructor(private titleService:Title) {
     const title = ['Home'];
     // console.log(this.titleService.getTitle());
-    this.titleService.setTitle(([this.titleService.getTitle() , title]).join(' | '));
-    // this.titleService.setTitle("Home");
+
+    if(this.titleService.getTitle().indexOf('|') !== -1){
+      this.titleService.setTitle(([this.titleService.getTitle().split(' | ')[0] , title]).join(' | '));
+
+    }else{
+      this.titleService.setTitle(([this.titleService.getTitle() , title]).join(' | '));
+    }
   }
-
-  // getTitle(state:any, parent:any):any {
-  //   const data = [];
-  //   if (parent && parent.snapshot.data && parent.snapshot.data.title) {
-  //     data.push(parent.snapshot.data.title);
-  //   }
-
-  //   if (state && parent) {
-  //     data.push(... this.getTitle(state, state.firstChild(parent)));
-  //   }
-  //   return data;
-  // }
-
   ngOnInit(): void {
     this.faq = [
       {

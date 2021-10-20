@@ -8,7 +8,6 @@ import { Bidform } from '../bid-form';
 import { WindowRefService } from '../window-ref.service';
 import { Title } from '@angular/platform-browser';
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
-import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -17,12 +16,6 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./add-group.component.css']
 })
 export class AddGroupComponent implements OnInit,AfterViewChecked {
-
-  private sub!: Subscription;
-  // @ViewChild('transfer1') myDiv!: ElementRef;
-
-  // groupDetails: any = [];
-  // groupIds:any = [];
   groupId:any = '';
   faExternalLinkAlt:any = faExternalLinkAlt;
 
@@ -40,8 +33,6 @@ export class AddGroupComponent implements OnInit,AfterViewChecked {
   userDetails:any = '';
   showBankDetailsModal:boolean = true;
   showBidForm = false;
-  showBidTimer = true;
-  // showTransferButton = false;
   showUserNotFoundError = false;
   loggedInUser:any = '';
   token:any = '';

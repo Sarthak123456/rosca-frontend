@@ -24,9 +24,6 @@ export class SignUpComponent implements OnInit {
       this.titleService.setTitle(([this.titleService.getTitle() , title]).join(' | '));
     }
 
-    console.log("getTitle = " , this.titleService.getTitle());
-
-
    }
 
   ngOnInit(): void {
@@ -36,7 +33,6 @@ export class SignUpComponent implements OnInit {
 
   onSignUp(){
     // console.log(this.signUp);
-
     if(!this.signUp.userName){
       this.openSnackBar("Please fill user name!", "close");
     } else if( !this.signUp.lastName ){

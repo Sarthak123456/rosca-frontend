@@ -8,6 +8,7 @@ import { Bidform } from '../bid-form';
 import { WindowRefService } from '../window-ref.service';
 import { Title } from '@angular/platform-browser';
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -16,6 +17,8 @@ import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./add-group.component.css']
 })
 export class AddGroupComponent implements OnInit,AfterViewChecked {
+
+  private sub!: Subscription;
   // @ViewChild('transfer1') myDiv!: ElementRef;
 
   // groupDetails: any = [];
@@ -37,7 +40,7 @@ export class AddGroupComponent implements OnInit,AfterViewChecked {
   userDetails:any = '';
   showBankDetailsModal:boolean = true;
   showBidForm = false;
-  // showBidButton = false;
+  showBidTimer = true;
   // showTransferButton = false;
   showUserNotFoundError = false;
   loggedInUser:any = '';
@@ -76,7 +79,7 @@ export class AddGroupComponent implements OnInit,AfterViewChecked {
   }
   ngOnInit(): void {
     this.getGroups();
-  }
+}
 
   ngAfterViewChecked(){
     this.setBidAndTransferButton();
@@ -173,13 +176,6 @@ export class AddGroupComponent implements OnInit,AfterViewChecked {
         // console.log("data" , data);
 
       this.data.forEach((element: any, i:number) => {
-        // this.timeLeftString = element.time_left;
-        // console.log("timeLeft = ",  this.timeLeftString.split(', '));
-        // let timeLeftArray =  this.timeLeftString.split(', ')[1];
-        // this.timeLeft.days = parseInt(this.timeLeftString.split(', ')[0]);
-        // this.timeLeft.hours = parseInt(timeLeftArray.split(":")[0]);
-        // this.timeLeft.minutes = parseInt(timeLeftArray.split(":")[1]);
-        // this.timeLeft.seconds = parseInt(timeLeftArray.split(":")[2]);
         element.usersInGroup.forEach((user: string|any) => {
           // console.log(element.bid_end_date);
           if(user.username === this.loggedInUser){
@@ -610,7 +606,7 @@ export class AddGroupComponent implements OnInit,AfterViewChecked {
       },
         error => {
           console.log("error" , error);
-          this.openSnackBar("Error submitting bid "+ error.message, "close");
+          this.openSnackBar("Error submitting bid ", "close");
 
       }
     );

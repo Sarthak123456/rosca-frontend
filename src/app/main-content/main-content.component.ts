@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Title } from "@angular/platform-browser";
-import { faPhoneAlt, faEnvelopeOpenText} from '@fortawesome/free-solid-svg-icons';
-import { faYoutube, faInstagram, faFacebook } from '@fortawesome/free-brands-svg-icons';
+import {Title, Meta } from "@angular/platform-browser";
+import { faPhoneAlt, faEnvelopeOpenText, faLongArrowAltRight} from '@fortawesome/free-solid-svg-icons';
+import { faYoutube, faInstagram, faFacebook} from '@fortawesome/free-brands-svg-icons';
 
 
 @Component({
@@ -16,9 +16,10 @@ export class MainContentComponent implements OnInit {
   faInstagram:any = faInstagram;
   faYoutube:any = faYoutube;
   faEnvelopeOpenText:any = faEnvelopeOpenText;
+  faLongArrowAltRight:any=faLongArrowAltRight;
   media_url = 'https://res.cloudinary.com/hj6tgz5ku/image/upload/v1632915501'
 
-  constructor(private titleService:Title) {
+  constructor(private titleService:Title, private metaService: Meta) {
     const title = ['Home'];
     // console.log(this.titleService.getTitle());
 
@@ -30,6 +31,10 @@ export class MainContentComponent implements OnInit {
     }
   }
   ngOnInit(): void {
+    this.metaService.addTags([
+      {name: 'keywords', content: 'chit fund, chit fund application, chit fund in india, chit fund scheme, chit scheme,  chits and funds,  chit fund, chit funds in india, fund in india, rosca, chitfund, moneyclub, therosca, chit fund company, chit fund schemes, chitfunds, chit fund business, chit fund concept, chit fund investment, chit fund means, chit fund process, chits and funds, chit fund explained, chit funds explained, mypaisaa'},
+      {name: 'description', content: "India's only 'No Comission' social group saving platform"}
+      ]);
     this.faq = [
       {
         "question" : 'What is ROSCA?',

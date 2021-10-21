@@ -1,11 +1,11 @@
 //Install express server
 const express = require('express');
-const path = require('path');
-
 const app = express();
 
+var forceSsl = require('force-ssl-heroku');
 // Serve only the static files form the dist directory
 app.use(express.static('./dist/thrive'));
+app.use(forceSsl);
 
 app.get('/*',function(req,res,next){
   if(req.headers['x-forwarded-proto']!='https')

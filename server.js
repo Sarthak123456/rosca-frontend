@@ -7,7 +7,22 @@ var forceSsl = require('force-ssl-heroku');
 app.use(express.static('./dist/thrive'));
 app.use(forceSsl);
 
-app.get('/*',function(req,res,next){
+app.all('*',function(req,res,next){
+  if(req.headers['x-forwarded-proto']!='https')
+    res.redirect('https://www.therosca.in'+req.url)
+  else
+    next() /* Continue to other routes if we're not redirecting */
+})
+
+app.use('*',function(req,res,next){
+  if(req.headers['x-forwarded-proto']!='https')
+    res.redirect('https://www.therosca.in'+req.url)
+  else
+    next() /* Continue to other routes if we're not redirecting */
+})
+
+
+app.get('*',function(req,res,next){
   if(req.headers['x-forwarded-proto']!='https')
     res.redirect('https://www.therosca.in'+req.url)
   else

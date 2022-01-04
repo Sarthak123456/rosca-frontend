@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http'
 
@@ -8,7 +8,6 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { MainContentComponent } from './main-content/main-content.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
@@ -20,11 +19,6 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatTableModule} from '@angular/material/table';
 
-
-
-
-
-
 import { LoginComponent } from './login/login.component';
 import { AddGroupComponent } from './add-group/add-group.component';
 import { ViewGroupComponent } from './view-group/view-group.component';
@@ -33,6 +27,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TncComponent } from './tnc/tnc.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -47,7 +43,7 @@ import { TncComponent } from './tnc/tnc.component';
     ViewPaymentDetailsComponent,
     SignUpComponent,
     TncComponent
-  ],
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -63,9 +59,16 @@ import { TncComponent } from './tnc/tnc.component';
     HttpClientModule,
     MatBadgeModule,
     MatTableModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }

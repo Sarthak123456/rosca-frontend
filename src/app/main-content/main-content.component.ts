@@ -23,6 +23,11 @@ export class MainContentComponent implements OnInit {
     const title = ['Home'];
     // console.log(this.titleService.getTitle());
 
+    // this.metaService.addTags([
+    //   {name: 'keywords', content: 'chit fund, chit fund application, chit fund in india, chit fund scheme, chit scheme,  chits and funds,  chit fund, chit funds in india, fund in india, rosca, chitfund, moneyclub, therosca, chit fund company, chit fund schemes, chitfunds, chit fund business, chit fund concept, chit fund investment, chit fund means, chit fund process, chits and funds, chit fund explained, chit funds explained, mypaisaa'},
+    //   {name: 'description', content: "India's only 'No Comission' social group saving platform"}
+    //   ]);
+
     if(this.titleService.getTitle().indexOf('|') !== -1){
       this.titleService.setTitle(([this.titleService.getTitle().split(' | ')[0] , title]).join(' | '));
 
@@ -31,10 +36,6 @@ export class MainContentComponent implements OnInit {
     }
   }
   ngOnInit(): void {
-    this.metaService.addTags([
-      {name: 'keywords', content: 'chit fund, chit fund application, chit fund in india, chit fund scheme, chit scheme,  chits and funds,  chit fund, chit funds in india, fund in india, rosca, chitfund, moneyclub, therosca, chit fund company, chit fund schemes, chitfunds, chit fund business, chit fund concept, chit fund investment, chit fund means, chit fund process, chits and funds, chit fund explained, chit funds explained, mypaisaa'},
-      {name: 'description', content: "India's only 'No Comission' social group saving platform"}
-      ]);
     this.faq = [
       {
         "question" : 'What is ROSCA?',

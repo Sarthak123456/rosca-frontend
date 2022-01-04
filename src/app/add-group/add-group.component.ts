@@ -78,7 +78,7 @@ export class AddGroupComponent implements OnInit,AfterViewChecked {
   setBidAndTransferButton(){
 
     this.activeGroupDetails.forEach((element: any, i:number) => {
-      // console.log("element = "  , element);
+      console.log("element = "  , element);
       var oldDate = new Date("Thu Jan 01 1970 23:59:00 GMT +0530(IST)");
       const today = new Date();
       today.setHours(oldDate.getHours());
@@ -89,17 +89,41 @@ export class AddGroupComponent implements OnInit,AfterViewChecked {
       const endDateInMilis = element.endDateInMilis ? element.endDateInMilis : null;
 
       // console.log("admin = " , element.admin);
+      // console.log('logged in user = ' , element.usersInGroup.filter((item:any) => {return item.username == this.loggedInUser}));
+      // console.log(this.loggedInUser);
+      let userDetail = element.usersInGroup.filter((item:any) => {return item.username == this.loggedInUser})[0];
+
       // console.log("totalAmount = " , element.totalAmount);
-      // console.log("today = " , today);
+      // console.log("userDetail = " , userDetail.winner);
       // console.log("bidEndDate = " , bidEndDateInMilis);
       // console.log("endDateInMilis = " , endDateInMilis);
 
       // var y = document.getElementById('bidButton' + i );
       // console.log("bidButton=", today , bidEndDate, today <= bidEndDate, today > bidEndDate);
+      const bidButton = document.getElementById('bidButton' + i );
+      const transferbtn = document.getElementById('transfer' + i );
 
-      if(today.getTime() <= bidEndDateInMilis){
-        var bidButton = document.getElementById('bidButton' + i );
-        const transferbtn = document.getElementById('transfer' + i );
+      if(element.minBidAmountUser == this.loggedInUser || element.winner == this.loggedInUser && element.round > 1){
+
+        if(bidButton){
+          bidButton.style.display = "none";
+          // this.showBidButton = true;
+        }
+
+        if(transferbtn){
+          transferbtn.style.display = "none";
+          // console.log("transferbtn=" , transferbtn);
+
+          // this.showTransferButton = true;
+
+        }
+
+
+
+      }
+
+      else if(today.getTime() <= bidEndDateInMilis){
+
         // console.log("loggedInUser = " ,  localStorage.getItem("loggedInUser"));
             if(bidButton){
               bidButton.style.display = "initial";
@@ -114,13 +138,10 @@ export class AddGroupComponent implements OnInit,AfterViewChecked {
 
             }
           } else if(endDateInMilis > today){
-
-              // const y = document.getElementById('transfer' + i );
-              var bidButton = document.getElementById('bidButton' + i );
-              const transferbtn = document.getElementById('transfer' + i );
                 // console.log("loggedInUser tra = " ,  localStorage.getItem("loggedInUser"));
-
+                console.log("userDetail = " , userDetail.winner);
                 if(bidButton){
+                  console.log("userDetail = " , userDetail.winner);
                   bidButton.style.display = "none";
                   // this.showBidButton = true;
                 }
@@ -181,7 +202,7 @@ export class AddGroupComponent implements OnInit,AfterViewChecked {
               this.activeGroupDetails.push(element);
               this.activeGroupCount ++;
 
-              // console.log("bidEndDate = " , element.bidEndDate);
+              console.log("bidEndDate = " , element);
               // const today = new Date();
               // const bidEndDate = new Date(element.bidEndDate);
 

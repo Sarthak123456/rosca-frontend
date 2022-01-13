@@ -7,7 +7,8 @@ import { Injectable } from '@angular/core';
 })
 export class HttpService {
 
-  base_url = 'https://therosca.herokuapp.com';
+  // base_url = 'https://therosca.herokuapp.com';
+  base_url = 'http://127.0.0.1:8000';
   constructor(private _http:HttpClient) { }
 
 

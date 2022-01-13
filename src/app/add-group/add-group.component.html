@@ -43,6 +43,7 @@
 </form> {% endcomment %} -->
 <br>
 
+
   <div class="card">
     <h4 class="text-center mb-4">Create Group</h4>
   <form class="example-form" (ngSubmit)="addGroup()" #heroForm="ngForm">
@@ -80,6 +81,11 @@
 <button mat-raised-button class='bg-custom' [disabled]="!heroForm.form.valid">Add</button>
 </form>
   </div>
+
+
+<button class="btn btn-primary" routerLink='/addGroup' (click)="subscribeToNotifications()">
+  Subscribe
+</button>
 
 <!--
 

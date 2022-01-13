@@ -15,7 +15,11 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2017",
+    "allowJs": true,
     "module": "es2020",
+    "paths": {
+      "stream": [ "./node_modules/https-browserify" ]
+    },
     "lib": [
       "es2018",
       "dom"

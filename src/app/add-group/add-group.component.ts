@@ -8,6 +8,11 @@ import { Bidform } from '../bid-form';
 import { WindowRefService } from '../window-ref.service';
 import { Title } from '@angular/platform-browser';
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import { SwPush } from '@angular/service-worker';
+import { OneSignalService } from 'onesignal-ngx';
+import { PushService } from '../push.service';
+// import '../push.js';
+// import {pushnotif} from '../push.js';
 
 
 @Component({
@@ -19,6 +24,8 @@ export class AddGroupComponent implements OnInit,AfterViewChecked {
   groupId:any = '';
   faExternalLinkAlt:any = faExternalLinkAlt;
 
+  readonly publicKey= "BHYoWkri64_MLB2A1Qxgz5i_pGIXSWSCpE12MjKRAEAbc0uazaSmGx4aFyPr7pImDL6kFpyKxHNQ9WvZh1OhFuI"
+  readonly privateKey= "ENueWzQJax2NGeWR11BX4AuCdgXUvKhdTwvEg_Sro1U"
 
   newGroup = new AddGroup('' , '1m' , parseInt(''));
   activeGroupDetails:any = [];
@@ -59,7 +66,11 @@ export class AddGroupComponent implements OnInit,AfterViewChecked {
   });
 
 
-  constructor(private _snackBar: MatSnackBar, private _httpService:HttpService, private winRef: WindowRefService, private titleService:Title) {
+  constructor(private os:PushService, private oneSignal: OneSignalService, private _snackBar: MatSnackBar, private _httpService:HttpService, private winRef: WindowRefService, private titleService:Title,  private swPush: SwPush) {
+    this.subscribeToNotifications();
+    this.oneSignal.init({
+      appId: "54fcb0c1-30fe-4da5-b050-7af3b78891cc",
+  });
     const title = ['Add Group'];
     if(this.titleService.getTitle().indexOf('|') !== -1){
       this.titleService.setTitle(([this.titleService.getTitle().split(' | ')[0] , title]).join(' | '));
@@ -70,6 +81,37 @@ export class AddGroupComponent implements OnInit,AfterViewChecked {
   }
   ngOnInit(): void {
     this.getGroups();
+  //   this.swPush.messages.subscribe((message)=>{console.log(message)});
+
+  // this.swPush.notificationClicks.subscribe(({action,notification}) => {
+  //   // console.log("event = ", event);
+  //   window.open(notification.data.url);
+  //       // TODO: Do something in response to notification click.
+  //   });
+
+}
+
+subscribeToNotifications() {
+
+  this.os.sendMessage('Hi').subscribe((item)=>{
+    console.log(item);
+
+  })
+
+  // var xyz = new pushnotif('Abc', 'kkk');
+  // console.log(pushnotif);
+  // pushnotif.sendNotification();
+  // console.log(this.publicKey);
+  // console.log("publicKey");
+
+
+  // this.swPush.requestSubscription({
+  //     serverPublicKey: this.publicKey
+  // })
+  // .then(sub => console.log(sub))
+
+  // .catch(err => console.error("Could not subscribe to notifications", err));
+
 }
 
   ngAfterViewChecked(){
@@ -78,7 +120,7 @@ export class AddGroupComponent implements OnInit,AfterViewChecked {
   setBidAndTransferButton(){
 
     this.activeGroupDetails.forEach((element: any, i:number) => {
-      console.log("element = "  , element);
+      // console.log("element = "  , element);
       var oldDate = new Date("Thu Jan 01 1970 23:59:00 GMT +0530(IST)");
       const today = new Date();
       today.setHours(oldDate.getHours());
@@ -138,10 +180,7 @@ export class AddGroupComponent implements OnInit,AfterViewChecked {
 
             }
           } else if(endDateInMilis > today){
-                // console.log("loggedInUser tra = " ,  localStorage.getItem("loggedInUser"));
-                console.log("userDetail = " , userDetail.winner);
                 if(bidButton){
-                  console.log("userDetail = " , userDetail.winner);
                   bidButton.style.display = "none";
                   // this.showBidButton = true;
                 }
@@ -202,7 +241,7 @@ export class AddGroupComponent implements OnInit,AfterViewChecked {
               this.activeGroupDetails.push(element);
               this.activeGroupCount ++;
 
-              console.log("bidEndDate = " , element);
+              // console.log("bidEndDate = " , element);
               // const today = new Date();
               // const bidEndDate = new Date(element.bidEndDate);
 
@@ -588,8 +627,13 @@ export class AddGroupComponent implements OnInit,AfterViewChecked {
           // if()
           // minBidAmountUser
           // let groupDetail = JSON.parse(JSON.stringify(data));
+          let msg = `${this.loggedInUser} bid for ${this.bidForm.amount}`;
 
           this.openSnackBar("Bid submitted successfully", "close");
+          this.os.sendMessage(msg).subscribe((item)=>{
+            console.log(item);
+
+          })
            // console.log("this.activeGroupDetails = " , this.activeGroupDetails);
           var x = document.getElementById('showBidAmountForm' + i);
           var y = document.getElementById('subscribe' + i );

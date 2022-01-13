@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import{Router, NavigationEnd} from '@angular/router';
+import{Router} from '@angular/router';
 
 //declare gives Angular app access to ga function
 declare let gtag: Function;

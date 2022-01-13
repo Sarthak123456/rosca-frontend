@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 
 // Serve only the static files form the dist directory
-app.use(express.static('./dist/thrive'));
+app.use(express.static('./dist/Rosca'));
 
 // app.get('*',function(req,res,next){
 //   if(req.headers['x-forwarded-proto']!='https')
@@ -13,7 +13,7 @@ app.use(express.static('./dist/thrive'));
 // })
 
 app.get('/*', (req, res) =>
-    res.sendFile('index.html', {root: 'dist/thrive/'}),
+    res.sendFile('index.html', {root: 'dist/Rosca/'}),
 );
 
 // Start the app by listening on the default Heroku port

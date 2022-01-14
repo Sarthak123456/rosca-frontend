@@ -12,6 +12,10 @@ app.use(express.static('./dist/Rosca'));
 //     next() /* Continue to other routes if we're not redirecting */
 // })
 
+// app.get("/OneSignalSDKWorker.js", (req, res) =>
+//   res.sendFile('OneSignalSDKWorker.js', {root: 'dist/Rosca/'}),
+// );
+
 app.get('/*', (req, res) =>
     res.sendFile('index.html', {root: 'dist/Rosca/'}),
 );

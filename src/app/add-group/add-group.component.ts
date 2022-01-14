@@ -68,9 +68,7 @@ export class AddGroupComponent implements OnInit,AfterViewChecked {
 
   constructor(private os:PushService, private oneSignal: OneSignalService, private _snackBar: MatSnackBar, private _httpService:HttpService, private winRef: WindowRefService, private titleService:Title,  private swPush: SwPush) {
   //   this.subscribeToNotifications();
-  //   this.oneSignal.init({
-  //     appId: "54fcb0c1-30fe-4da5-b050-7af3b78891cc",
-  // });
+
     const title = ['Add Group'];
     if(this.titleService.getTitle().indexOf('|') !== -1){
       this.titleService.setTitle(([this.titleService.getTitle().split(' | ')[0] , title]).join(' | '));
@@ -92,9 +90,13 @@ export class AddGroupComponent implements OnInit,AfterViewChecked {
 }
 
 subscribeToNotifications() {
+  this.oneSignal.init({
+    appId: "54fcb0c1-30fe-4da5-b050-7af3b78891cc",
+});
 
   this.os.sendMessage('Hi').subscribe((item)=>{
     console.log(item);
+
 
   })
 
